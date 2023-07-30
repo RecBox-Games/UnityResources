@@ -50,7 +50,7 @@ public class controlpads_glue : MonoBehaviour
     [SerializeField]
     private UnityEvent<string, string> _onControlpadMessage;
     
-    List<string> clientHandles = new List<string>();
+    static List<string> clientHandles = new List<string>();
     
     // Start is called before the first frame update
     void Start()
@@ -75,7 +75,7 @@ public class controlpads_glue : MonoBehaviour
     }
 
     // Call this function in your own code to send messages to controlpads
-    public static void SendMessage(string client, string message) {
+    public static void SendControlpadMessage(string client, string message) {
         ControlpadsLibrary.send_message(client, message);
     }
 

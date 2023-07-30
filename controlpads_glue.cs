@@ -77,7 +77,11 @@ public class controlpads_glue : MonoBehaviour
     // Call this function in your own code to send messages to controlpads
     public static void SendControlpadMessage(string client, string message) {
         if (client == null || client.Length == 0 || client.Contains(" ")) {
-            Debug.Log(string.Format("Invalid client specified for message <{0}>", message));
+            Debug.Log(string.Format("Warning: Invalid client specified for controlpad message <{0}>", message));
+            return;
+        }
+	if (message == null) {
+            Debug.Log("Warning: Tried to send a null controlpad message");
             return;
         }
         int result = ControlpadsLibrary.send_message(client, message);
